@@ -9,6 +9,8 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import BernoulliNB
 
+c = CountVectorizer()
+
 
 def transform(x, model='ft'):
     """
@@ -19,9 +21,9 @@ def transform(x, model='ft'):
     """
 
     if model is 'ft':
-        return CountVectorizer().fit_transform(x)
+        return c.fit_transform(x)
     else:
-        return CountVectorizer().transform(x)
+        return c.transform(x)
 
 
 class NaiveBayes:
@@ -32,9 +34,9 @@ class NaiveBayes:
         self.model = None
 
     def fit(self, x, y):
-        self.x = x
+        self.x = transform(x, 'ft')
         self.y = y
-        self.model = BernoulliNB().fit(x, y)
+        self.model = BernoulliNB().fit(self.x, self.y)
 
     def predict(self, text):
         """
