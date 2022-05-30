@@ -6,8 +6,8 @@
 # @File    : load_data.py
 # @Software: PyCharm
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split
 
 
@@ -23,7 +23,6 @@ def load_data(path, train_size=0.8):
     data = pd.read_csv(path, sep='\\t', header=None, names=class_names, engine='python')
     datas, labels = data['messages'], data['labels']
     _train_data, _test_data, _train_label, _test_label = train_test_split(datas, labels, train_size=train_size,
-                                                                       random_state=520)
+                                                                          random_state=520)
 
     return np.array(_train_data), np.array(_test_data), np.array(_train_label), np.array(_test_label)
-
