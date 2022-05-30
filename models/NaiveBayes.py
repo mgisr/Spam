@@ -9,6 +9,8 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import BernoulliNB
 
+c = CountVectorizer()
+
 
 def transform(x, model='ft'):
     """
@@ -18,7 +20,6 @@ def transform(x, model='ft'):
     :return: 词频矩阵
     """
 
-    c = CountVectorizer()
     if model == 'ft':
         return c.fit_transform(x)
     else:
